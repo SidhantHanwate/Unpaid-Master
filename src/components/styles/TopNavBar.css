@@ -1,0 +1,86 @@
+.navbar {
+    overflow: hidden;
+    background-color: #282c34;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.dropbtn{
+    text-orientation: sideways;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.nav-icon{
+    background-color: #282c34;
+    color: white;
+    margin-left: 5px;
+    display: none;
+}
+
+.navbar .dropdown-but {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    width: fit-content;
+    column-width: inherit;
+    background-color: #282c34;
+}
+
+.dropdown-but {
+    width: inherit;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-but:hover,
+.dropdown:hover .dropbtn,
+.dropbtn:focus .dropbtn:hover {
+    color: #61dafb;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content .dropdown-but {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content .dropdown-but:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+    width: fit-content;
+}

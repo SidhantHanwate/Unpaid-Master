@@ -1,0 +1,8 @@
+.footer {
+    color: black;
+    text-align: center;
+    margin: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 800px;
+}
