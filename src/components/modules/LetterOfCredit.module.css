@@ -9,6 +9,12 @@
 	margin: 0;
 }
 
+.actBtngrp {
+	display: flex;
+	flex-direction: row;
+	gap: 644px;
+}
+
 body {
 	background-color: bisque;
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -19,6 +25,18 @@ body {
 	text-align: center;
 	color: darkslateblue;
 	padding-bottom: 10px;
+}
+
+.genBut {
+	position: relative;
+	color: aqua;
+	width: fit-content;
+}
+
+.btn {
+	position: absolute;
+	color: blue;
+	background-color: chocolate;
 }
 
 .App {

@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
 import Style from "./../modules/LetterOfCredit.module.css";
+import { Button, ButtonGroup, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useFormik } from "formik";
+import axios from "axios";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
+const FILE_NAME = "myfile.pdf";
 
 export function LetterOfCredit() {
+	const formik = useFormik({
+		initialValues: {
+			recipient: "Devansh",
+			bank: "SBI",
+			address: "Tirupati",
+			amount: "$5000",
+			date: "10-10-2022",
+			valid: "10-12-2022",
+		},
+	});
+
+	var createAndDownloadPdf = (event) => {
+		axios.post(`http://localhost:${PORT}/createpdf`, formik.values).then(() => {
+			axios
+				.get(`http://localhost:${PORT}/getpdf`, { responseType: "blob" })
+				.then((res) => {
+					// pdf response from get
+					const pdfblob = new Blob([res.data], { type: "application/pdf" });
+					saveAs(pdfblob, `${FILE_NAME}.pdf`);
+				});
+		});
+	};
+
 	return (
 		<div className={Style.forSection}>
 			<section>
@@ -23,6 +53,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Recipient name"
 									name="recipient"
+									value={formik.values.recipient}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -36,6 +68,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Bank name"
 									name="bank"
+									value={formik.values.bank}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -47,6 +81,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Address"
 									name="address"
+									value={formik.values.address}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -58,6 +94,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Amount"
 									name="amount"
+									value={formik.values.amount}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -70,6 +108,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Date"
 									name="date"
+									value={formik.values.date}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -81,6 +121,8 @@ export function LetterOfCredit() {
 									required
 									placeholder="Enter Valid till date"
 									name="valid"
+									value={formik.values.valid}
+									onChange={formik.handleChange}
 								/>
 							</div>
 						</form>
@@ -91,8 +133,34 @@ export function LetterOfCredit() {
 						<br></br>
 					</div>
 				</div>
-				<div className="btn">
-					<button type="submit">Generate</button>
+				<div
+					style={{
+						color: "blue",
+					}}
+					className="btn"
+				>
+					<ButtonGroup className={Style.actBtngrp}>
+						<OverlayTrigger
+							key="top"
+							placement="top"
+							overlay={<Tooltip>Generate .pdf</Tooltip>}
+						>
+							<Button
+								className={Style.genBut}
+								variant="secondary"
+								onClick={createAndDownloadPdf}
+							>
+								Generate
+							</Button>
+						</OverlayTrigger>
+						<OverlayTrigger
+							key="top"
+							placement="top"
+							overlay={<Tooltip>Save in database</Tooltip>}
+						>
+							<Button className={Style.genBut}>Save</Button>
+						</OverlayTrigger>
+					</ButtonGroup>
 				</div>
 			</section>
 		</div>
