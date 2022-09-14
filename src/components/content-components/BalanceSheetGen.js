@@ -1,8 +1,82 @@
-import React from "react";
+import { useFormik } from "formik";
+import React, { useState } from "react";
 
 import Style from "../modules/BalanceSheetGen.module.css";
 
 export function BalanceSheetGen() {
+  const formik = useFormik({
+    initialValues: {
+      sc20: 0.0,
+      sc19: 0.0,
+      ta20: 0.0,
+      ta19: 0.0,
+      tsc20_lia201: 0.0,
+      tsc19: 0.0,
+      ia20: 0.0,
+      ia19: 0.0,
+      rf20: 0.0,
+      rf19: 0.0,
+      cwip19: 0.0,
+      cwip20: 0.0,
+      trf20_lia201: 0.0,
+      trf19: 0.0,
+      oa20: 0.0,
+      oa19: 0.0,
+      tsf19: 0.0,
+      tsf20: 0.0,
+      fa19: 0.0,
+      fa20: 0.0,
+      nci19: 0.0,
+      nci20: 0.0,
+      ltb19: 0.0,
+      ltb20: 0.0,
+      dta19: 0.0,
+      dta20: 0.0,
+      dtl19: 0.0,
+      dtl20: 0.0,
+      ltlaa19: 0.0,
+      ltlaa20: 0.0,
+      otll19: 0.0,
+      otll20: 0.0,
+      onca19: 0.0,
+      onca20: 0.0,
+      ltp19: 0.0,
+      ltp20: 0.0,
+      tnca19: 0.0,
+      tnca20: 0.0,
+      tncl19: 0.0,
+      tncl20: 0.0,
+      stb19: 0.0,
+      stb20: 0.0,
+      ci19: 0.0,
+      ci20: 0.0,
+      tp19: 0.0,
+      tp20: 0.0,
+      i19: 0.0,
+      i20: 0.0,
+      ocl19: 0.0,
+      ocl20: 0.0,
+      tr19: 0.0,
+      tr20: 0.0,
+      stp19: 0.0,
+      stp20: 0.0,
+      cace19: 0.0,
+      cace20: 0.0,
+      tcl19: 0.0,
+      tcl20: 0.0,
+      stlaa19: 0.0,
+      stlaa20: 0.0,
+      tcal19: 0.0,
+      tcal20: 0.0,
+      tca19: 0.0,
+      tca20: 0.0,
+      oca19: 0.0,
+      oca20: 0.0,
+      ta19: 0.0,
+      ta20: 0.0,
+    },
+  });
+
   return (
     <div>
       {
@@ -119,20 +193,20 @@ export function BalanceSheetGen() {
                   EQUITIES AND LIABILITIES
                 </td>
                 <td className="s3" dir="ltr">
-                  2020
+                  2022
                 </td>
                 <td className="s3" dir="ltr">
-                  2019
+                  2021
                 </td>
                 <td></td>
                 <td className="s2" dir="ltr">
                   ASSETS
                 </td>
                 <td className="s3" dir="ltr">
-                  2020
+                  2022
                 </td>
                 <td className="s3" dir="ltr">
-                  2019
+                  2021
                 </td>
                 <td></td>
                 <td></td>
@@ -183,7 +257,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="sc20"
-                    value="0.03"
+                    name="sc20"
+                    value={formik.values.sc20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -191,7 +267,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="sc19"
-                    value="0.03"
+                    name="sc19"
+                    value={formik.values.sc19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -203,7 +281,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ta20"
-                    value="57.54"
+                    name="ta20"
+                    value={formik.values.ta20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -211,7 +291,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ta19"
-                    value="93.39"
+                    name="ta19"
+                    value={formik.values.ta19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -236,26 +318,44 @@ export function BalanceSheetGen() {
                   <input
                     type="number"
                     step="0.01"
-                    className="tsc20 lia201"
-                    value="0.03"
+                    className="tsc20_lia201"
+                    name="tsc20_lia201"
+                    value={formik.values.tsc20_lia201}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="tsc19" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="tsc19"
+                    name="tsc19"
+                    value={formik.values.tsc19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td className="s1" dir="ltr">
                   Intangible Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="ia20" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="ia20"
+                    name="ia20"
+                    value={formik.values.ia20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
                   <input
                     type="number"
                     step="0.01"
                     className="ia19"
-                    value="1486.12"
+                    name="1a19"
+                    value={formik.values.ia19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -281,11 +381,20 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="rf20"
-                    value="7754.50"
+                    name="rf20"
+                    value={formik.values.rf20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="rf19" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="rf19"
+                    name="rf19"
+                    value={formik.values.rf19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td className="s1" dir="ltr">
@@ -296,7 +405,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="cwip20"
-                    value="0"
+                    name="cwip20"
+                    value={formik.values.cwip20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -304,7 +415,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="cwip19"
-                    value="0"
+                    name="cwip19"
+                    value={formik.values.cwip19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -329,8 +442,10 @@ export function BalanceSheetGen() {
                   <input
                     type="number"
                     step="0.01"
-                    className="trf20 lia201"
-                    value="7754.50"
+                    className="trf20_lia201"
+                    name="trf20_lia201"
+                    value={formik.values.trf20_lia201}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -338,7 +453,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="trf19"
-                    value="601.41"
+                    name="trf19"
+                    value={formik.values.trf19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -346,10 +463,24 @@ export function BalanceSheetGen() {
                   Other Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="oa20" value="0" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="oa20"
+                    name="oa20"
+                    value={formik.values.oa20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="oa19" value="0" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="oa19"
+                    name="oa19"
+                    value={formik.values.oa19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td className="s1" dir="ltr"></td>
@@ -375,7 +506,9 @@ export function BalanceSheetGen() {
                     step="0.01"
                     className="tsf20"
                     id="liasum201"
-                    value="7754.53"
+                    name="tsf20"
+                    value={formik.values.tsf20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -384,7 +517,9 @@ export function BalanceSheetGen() {
                     step="0.01"
                     className="tsf19"
                     id="liasum191"
-                    value="601.44"
+                    name="tsf19"
+                    value={formik.values.tsf19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -397,7 +532,9 @@ export function BalanceSheetGen() {
                     step="0.01"
                     className="fa20"
                     id="asssum201"
-                    value="1450.64"
+                    name="fa20"
+                    value={formik.values.fa20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -406,7 +543,9 @@ export function BalanceSheetGen() {
                     step="0.01"
                     className="fa19"
                     id="asssum191"
-                    value="1580.28"
+                    name="fa19"
+                    value={formik.values.fa19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -438,11 +577,19 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="nci20"
-                    value="311.74"
+                    name="nci20"
+                    value={formik.values.nci20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="nci19" value="200.31" />
+                  <input
+                    type="number"
+                    className="nci19"
+                    name="nci19"
+                    value={formik.values.nci19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -467,7 +614,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ltb20"
-                    value="0"
+                    name="ltb20"
+                    value={formik.values.ltb20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -475,7 +624,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ltb19"
-                    value="0"
+                    name="ltb19"
+                    value={formik.values.ltb19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -483,10 +634,22 @@ export function BalanceSheetGen() {
                   Deferred Tax Assets [Net]
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="dta20" value="0" />
+                  <input
+                    type="number"
+                    className="dta20"
+                    name="dta20"
+                    value={formik.values.dta20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="dta19" value="0" />
+                  <input
+                    type="number"
+                    className="dta19"
+                    name="dta19"
+                    value={formik.values.dta19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -511,7 +674,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="dtl20"
-                    value="0"
+                    name="dtl20"
+                    value={formik.values.dtl20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -519,7 +684,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="dtl19"
-                    value="0"
+                    name="dtl19"
+                    value={formik.values.dtl19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -527,10 +694,22 @@ export function BalanceSheetGen() {
                   Long Term Loans And Advances
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ltlaa20" value="0" />
+                  <input
+                    type="number"
+                    className="ltlaa20"
+                    name="ltlaa20"
+                    value={formik.values.ltlaa20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ltlaa19" value="0" />
+                  <input
+                    type="number"
+                    className="ltlaa19"
+                    name="ltlaa19"
+                    value={formik.values.ltlaa19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -555,7 +734,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="otll20"
-                    value="46.69"
+                    name="otll20"
+                    value={formik.values.otll20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -563,7 +744,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="otll19"
-                    value="1456.06"
+                    name="otll19"
+                    value={formik.values.otll19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -571,10 +754,22 @@ export function BalanceSheetGen() {
                   Other Non-Current Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="onca20" value="3009.91" />
+                  <input
+                    type="number"
+                    className="onca20"
+                    name="onca20"
+                    value={formik.values.onca20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="onca19" value="22.7" />
+                  <input
+                    type="number"
+                    className="onca19"
+                    name="onca19"
+                    value={formik.values.onca19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -599,7 +794,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ltp20"
-                    value="19.73"
+                    name="ltp20"
+                    value={formik.values.ltp20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -607,7 +804,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ltp19"
-                    value="12.87"
+                    name="ltp19"
+                    value={formik.values.ltp19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -615,10 +814,22 @@ export function BalanceSheetGen() {
                   Total Non-Current Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="tnca20" value="4772.29" />
+                  <input
+                    type="number"
+                    className="tnca20"
+                    name="tnca20"
+                    value={formik.values.tnca20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="tnca19" value="1803.29" />
+                  <input
+                    type="number"
+                    className="tnca19"
+                    name="tnca19"
+                    value={formik.values.tnca19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -643,7 +854,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tncl20"
-                    value="66.41"
+                    name="tncl20"
+                    value={formik.values.tncl20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -651,7 +864,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tncl19"
-                    value="1468.93"
+                    name="tncl19"
+                    value={formik.values.tncl19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -707,7 +922,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="stb20"
-                    value="0"
+                    name="stb20"
+                    value={formik.values.stb20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -715,7 +932,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="stb19"
-                    value="0"
+                    name="stb19"
+                    value={formik.values.stb19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -723,10 +942,22 @@ export function BalanceSheetGen() {
                   Current Investments
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ci20" value="2194.11" />
+                  <input
+                    type="number"
+                    className="ci20"
+                    name="ci20"
+                    value={formik.values.ci20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ci19" value="323.92" />
+                  <input
+                    type="number"
+                    className="ci19"
+                    name="ci19"
+                    value={formik.values.ci19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s1" dir="ltr"></td>
                 <td></td>
@@ -751,7 +982,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tp20"
-                    value="274.07"
+                    name="tp20"
+                    value={formik.values.tp20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -759,7 +992,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tp19"
-                    value="256.8"
+                    name="tp19"
+                    value={formik.values.tp19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -767,10 +1002,24 @@ export function BalanceSheetGen() {
                   Inventories
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="i20" value="0" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="i20"
+                    name="i20"
+                    value={formik.values.i20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" step="0.01" className="i19" value="0" />
+                  <input
+                    type="number"
+                    step="0.01"
+                    className="i19"
+                    name="i19"
+                    value={formik.values.i19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -795,7 +1044,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ocl20"
-                    value="193.45"
+                    name="ocl20"
+                    value={formik.values.ocl20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -803,7 +1054,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ocl19"
-                    value="400.83"
+                    name="ocl19"
+                    value={formik.values.ocl19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -815,7 +1068,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tr20"
-                    value="123.71"
+                    name="tr20"
+                    value={formik.values.tr20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -823,7 +1078,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tr19"
-                    value="132.72"
+                    name="tr19"
+                    value={formik.values.tr19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -849,7 +1106,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="stp20"
-                    value="4.85"
+                    name="stp20"
+                    value={formik.values.stp20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -857,7 +1116,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="stp19"
-                    value="4.95"
+                    name="stp19"
+                    value={formik.values.stp19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -869,7 +1130,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="cace20"
-                    value="765.18"
+                    name="cace20"
+                    value={formik.values.cace20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -877,7 +1140,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="cace19"
-                    value="279.38"
+                    name="cace19"
+                    value={formik.values.cace19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -903,7 +1168,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tcl20"
-                    value="472.37"
+                    name="tcl20"
+                    value={formik.values.tcl20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -911,7 +1178,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tcl19"
-                    value="662.57"
+                    name="tcl19"
+                    value={formik.values.tcl19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -919,10 +1188,22 @@ export function BalanceSheetGen() {
                   Short Term Loans And Advances
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="stlaa20" value="40" />
+                  <input
+                    type="number"
+                    className="stlaa20"
+                    name="stlaa20"
+                    value={formik.values.stlaa20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="stlaa19" value="31.02" />
+                  <input
+                    type="number"
+                    className="stlaa19"
+                    name="stlaa19"
+                    value={formik.values.stlaa19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td></td>
@@ -947,7 +1228,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tcal20"
-                    value="8748.24"
+                    name="tcal20"
+                    value={formik.values.tcal20}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
@@ -955,7 +1238,9 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tcal19"
-                    value="2985.35"
+                    name="tcal19"
+                    value={formik.values.tcal19}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td></td>
@@ -963,10 +1248,22 @@ export function BalanceSheetGen() {
                   OtherCurrentAssets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="oca20" value="852.95" />
+                  <input
+                    type="number"
+                    className="oca20"
+                    name="oca20"
+                    value={formik.values.oca20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="oca19" value="415.03" />
+                  <input
+                    type="number"
+                    className="oca19"
+                    name="oca19"
+                    value={formik.values.oca19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td></td>
                 <td className="s1" dir="ltr"></td>
@@ -991,10 +1288,22 @@ export function BalanceSheetGen() {
                   Total Current Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="tca20" value="3975.95" />
+                  <input
+                    type="number"
+                    className="tca20"
+                    name="tca20"
+                    value={formik.values.tca20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="tca19" value="1182.06" />
+                  <input
+                    type="number"
+                    className="tca19"
+                    name="tca19"
+                    value={formik.values.tca19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s1" dir="ltr"></td>
                 <td></td>
@@ -1019,10 +1328,22 @@ export function BalanceSheetGen() {
                   Total Assets
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ta20" value="8748.24" />
+                  <input
+                    type="number"
+                    className="ta20"
+                    name="ta20"
+                    value={formik.values.ta20}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s5" dir="ltr">
-                  <input type="number" className="ta19" value="2985.35" />
+                  <input
+                    type="number"
+                    className="ta19"
+                    name="ta19"
+                    value={formik.values.ta19}
+                    onChange={formik.handleChange}
+                  />
                 </td>
                 <td className="s1" dir="ltr"></td>
                 <td></td>
@@ -1070,7 +1391,9 @@ export function BalanceSheetGen() {
                     readonly="true"
                     step="0.01"
                     className="diff"
-                    value="0.00"
+                    name="diff"
+                    value={formik.values.diff}
+                    onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s1" dir="ltr"></td>
@@ -1131,7 +1454,7 @@ export function BalanceSheetGen() {
                   <div
                     className="row-header-wrapper" /*style="line-height: 20px"*/
                   >
-                    49
+                    29
                   </div>
                 </th>
                 <td className="s1"></td>
@@ -1153,7 +1476,7 @@ export function BalanceSheetGen() {
                   <div
                     className="row-header-wrapper" /*style="line-height: 20px"*/
                   >
-                    50
+                    30
                   </div>
                 </th>
                 <td className="s1"></td>
@@ -1178,3 +1501,387 @@ export function BalanceSheetGen() {
     </div>
   );
 }
+
+// function sum(array) {
+//   var s = 0;
+//   for (let index = 0; index < array.length; index++) {
+//     s = s + parseFloat(array[index].value);
+//   }
+//   console.log(s);
+//   return s;
+// }
+
+// function bind1(sc, tsc, rf, trf, tsf) {
+//   sc.addEventListener("keyup", function () {
+//     tsc.value = sc.value;
+//     tsc.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   tsc.addEventListener("keyup", function () {
+//     tsf.value = parseFloat(tsc.value) + parseFloat(trf.value);
+//     tsf.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   rf.addEventListener("keyup", function () {
+//     trf.value = rf.value;
+//     trf.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   trf.addEventListener("keyup", function () {
+//     tsf.value = parseFloat(tsc.value) + parseFloat(trf.value);
+//     tsf.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+// }
+
+// function bind2(ltb, dtl, otll, ltp, tncl) {
+//   ltb.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   dtl.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   ltp.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   otll.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+// }
+
+// function bind3(tsf, tncl, tcl, tcal) {
+//   tsf.addEventListener("keyup", function () {
+//     tcal.value =
+//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
+//   });
+//   tncl.addEventListener("keyup", function () {
+//     tcal.value =
+//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
+//   });
+//   tcl.addEventListener("keyup", function () {
+//     tcal.value =
+//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
+//   });
+// }
+
+// function bind5(tsf, tncl, tcal) {
+//   tsf.addEventListener("keyup", function () {
+//     tcal.value = parseFloat(tsf.value) + parseFloat(tncl.value);
+//     tcal.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   tncl.addEventListener("keyup", function () {
+//     tcal.value = parseFloat(tsf.value) + parseFloat(tncl.value);
+//     tcal.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+// }
+
+// function bind4(ltb, dtl, otll, ltp, tcp, tncl) {
+//   ltb.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   dtl.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   ltp.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   otll.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   tcp.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+// }
+
+// function bind6(ltb, dtl, otll, ltp, tcp, ip, tncl) {
+//   ltb.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   dtl.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   ltp.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   otll.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   tcp.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+//   ip.addEventListener("keyup", function () {
+//     tncl.value =
+//       parseFloat(ltb.value) +
+//       parseFloat(dtl.value) +
+//       parseFloat(otll.value) +
+//       parseFloat(ltp.value) +
+//       parseFloat(tcp.value) +
+//       parseFloat(ip.value);
+//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
+//   });
+// }
+
+// function bindfin() {
+//   var l1 = document.getElementsByClassName("tcal19")[0];
+//   var l2 = document.getElementsByClassName("tcal20")[0];
+//   var a1 = document.getElementsByClassName("ta19")[1];
+//   var a2 = document.getElementsByClassName("ta20")[1];
+
+//   document.getElementsByClassName("diff")[0].value = Math.abs(
+//     parseFloat(l1.value) +
+//       parseFloat(l2.value) -
+//       (parseFloat(a1.value) + parseFloat(a2.value))
+//   );
+
+//   l1.addEventListener("keyup", function () {
+//     document.getElementsByClassName("diff")[0].value = Math.abs(
+//       parseFloat(l1.value) +
+//         parseFloat(l2.value) -
+//         (parseFloat(a1.value) + parseFloat(a2.value))
+//     );
+//   });
+//   l2.addEventListener("keyup", function () {
+//     document.getElementsByClassName("diff")[0].value = Math.abs(
+//       parseFloat(l1.value) +
+//         parseFloat(l2.value) -
+//         (parseFloat(a1.value) + parseFloat(a2.value))
+//     );
+//   });
+//   a1.addEventListener("keyup", function () {
+//     document.getElementsByClassName("diff")[0].value = Math.abs(
+//       parseFloat(l1.value) +
+//         parseFloat(l2.value) -
+//         (parseFloat(a1.value) + parseFloat(a2.value))
+//     );
+//   });
+//   a2.addEventListener("keyup", function () {
+//     document.getElementsByClassName("diff")[0].value = Math.abs(
+//       parseFloat(l1.value) +
+//         parseFloat(l2.value) -
+//         (parseFloat(a1.value) + parseFloat(a2.value))
+//     );
+//   });
+// }
+
+// function submit() {
+//   console.log("here");
+//   var arr1 = [];
+
+//   var sc = document.getElementsByClassName("sc20")[0];
+//   var tsc = document.getElementsByClassName("tsc20")[0];
+//   var rf = document.getElementsByClassName("rf20")[0];
+//   var trf = document.getElementsByClassName("trf20")[0];
+//   var tsf = document.getElementsByClassName("tsf20")[0];
+
+//   bind1(sc, tsc, rf, trf, tsf);
+
+//   var ltb = document.getElementsByClassName("ltb20")[0];
+//   var dtl = document.getElementsByClassName("dtl20")[0];
+//   var otll = document.getElementsByClassName("otll20")[0];
+//   var ltp = document.getElementsByClassName("ltp20")[0];
+//   var tncl = document.getElementsByClassName("tncl20")[0];
+//   bind2(ltb, dtl, otll, ltp, tncl);
+
+//   var stb = document.getElementsByClassName("stb20")[0];
+//   var tp = document.getElementsByClassName("tp20")[0];
+//   var ocl = document.getElementsByClassName("ocl20")[0];
+//   var stp = document.getElementsByClassName("stp20")[0];
+//   var tcl = document.getElementsByClassName("tcl20")[0];
+//   bind2(stb, tp, ocl, stp, tcl);
+
+//   bind3(tsf, tncl, tcl, document.getElementsByClassName("tcal20")[0]);
+
+//   sc = document.getElementsByClassName("sc19")[0];
+//   tsc = document.getElementsByClassName("tsc19")[0];
+//   rf = document.getElementsByClassName("rf19")[0];
+//   trf = document.getElementsByClassName("trf19")[0];
+//   tsf = document.getElementsByClassName("tsf19")[0];
+//   bind1(sc, tsc, rf, trf, tsf);
+
+//   ltb = document.getElementsByClassName("ltb19")[0];
+//   dtl = document.getElementsByClassName("dtl19")[0];
+//   otll = document.getElementsByClassName("otll19")[0];
+//   ltp = document.getElementsByClassName("ltp19")[0];
+//   tncl = document.getElementsByClassName("tncl19")[0];
+//   bind2(ltb, dtl, otll, ltp, tncl);
+
+//   stb = document.getElementsByClassName("stb19")[0];
+//   tp = document.getElementsByClassName("tp19")[0];
+//   ocl = document.getElementsByClassName("ocl19")[0];
+//   stp = document.getElementsByClassName("stp19")[0];
+//   tcl = document.getElementsByClassName("tcl19")[0];
+//   bind2(stb, tp, ocl, stp, tcl);
+
+//   bind3(tsf, tncl, tcl, document.getElementsByClassName("tcal19")[0]);
+
+//   ltb = document.getElementsByClassName("ta20")[0];
+//   dtl = document.getElementsByClassName("ia20")[0];
+//   otll = document.getElementsByClassName("cwip20")[0];
+//   ltp = document.getElementsByClassName("oa20")[0];
+//   tncl = document.getElementsByClassName("fa20")[0];
+//   bind2(ltb, dtl, otll, ltp, tncl);
+
+//   ltb = document.getElementsByClassName("nci20")[0];
+//   dtl = document.getElementsByClassName("dta20")[0];
+//   otll = document.getElementsByClassName("ltlaa20")[0];
+//   ltp = document.getElementsByClassName("onca20")[0];
+//   bind4(
+//     ltb,
+//     dtl,
+//     otll,
+//     ltp,
+//     tncl,
+//     document.getElementsByClassName("tnca20")[0]
+//   );
+
+//   ltb = document.getElementsByClassName("ci20")[0];
+//   dtl = document.getElementsByClassName("i20")[0];
+//   otll = document.getElementsByClassName("tr20")[0];
+//   ltp = document.getElementsByClassName("cace20")[0];
+//   tncl = document.getElementsByClassName("stlaa20")[0];
+//   stb = document.getElementsByClassName("oca20")[0];
+//   bind6(
+//     ltb,
+//     dtl,
+//     otll,
+//     ltp,
+//     tncl,
+//     stb,
+//     document.getElementsByClassName("tca20")[0]
+//   );
+
+//   bind5(
+//     document.getElementsByClassName("tnca20")[0],
+//     document.getElementsByClassName("tca20")[0],
+//     document.getElementsByClassName("ta20")[1]
+//   );
+
+//   ltb = document.getElementsByClassName("ta19")[0];
+//   dtl = document.getElementsByClassName("ia19")[0];
+//   otll = document.getElementsByClassName("cwip19")[0];
+//   ltp = document.getElementsByClassName("oa19")[0];
+//   tncl = document.getElementsByClassName("fa19")[0];
+//   bind2(ltb, dtl, otll, ltp, tncl);
+
+//   ltb = document.getElementsByClassName("nci19")[0];
+//   dtl = document.getElementsByClassName("dta19")[0];
+//   otll = document.getElementsByClassName("ltlaa19")[0];
+//   ltp = document.getElementsByClassName("onca19")[0];
+//   bind4(
+//     ltb,
+//     dtl,
+//     otll,
+//     ltp,
+//     tncl,
+//     document.getElementsByClassName("tnca19")[0]
+//   );
+
+//   ltb = document.getElementsByClassName("ci19")[0];
+//   dtl = document.getElementsByClassName("i19")[0];
+//   otll = document.getElementsByClassName("tr19")[0];
+//   ltp = document.getElementsByClassName("cace19")[0];
+//   tncl = document.getElementsByClassName("stlaa19")[0];
+//   stb = document.getElementsByClassName("oca19")[0];
+//   bind6(
+//     ltb,
+//     dtl,
+//     otll,
+//     ltp,
+//     tncl,
+//     stb,
+//     document.getElementsByClassName("tca19")[0]
+//   );
+
+//   bind5(
+//     document.getElementsByClassName("tnca19")[0],
+//     document.getElementsByClassName("tca19")[0],
+//     document.getElementsByClassName("ta19")[1]
+//   );
+
+//   bindfin();
+
+//   console.log("done ig");
+// }
+
+// document.onload = submit();
