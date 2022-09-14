@@ -22,7 +22,7 @@ import { EMDShowCase } from "./components/content-components/EMDShowCase";
 import { LetterOfCredit } from "./components/content-components/LetterOfCredit";
 
 import { AdHocPayr } from "./components/content-components/AdHocPayr";
-import { StaffPayr } from "./components/content-components/StaffPayr";
+import { earningData } from "./components/content-components/StaffPayr";
 import { FacultyPayr } from "./components/content-components/FacultyPayr";
 
 import { HostelCheckIn } from "./components/content-components/HostelCheckIn";
@@ -35,6 +35,9 @@ import { ContentHome } from "./components/content-components/ContentHome";
 import { NoProfile } from "./components/NoProfile";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Overview from "./components/Payroll/Payroll_overview/overview";
+import { UserList } from "./components/Payroll/Payroll_side_comp/UserList";
+import User from "./components/Payroll/Payroll_side_comp/User";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -58,8 +61,16 @@ root.render(
         </Route>
 
         <Route path="faculty">
-          <Route path="payroll-faculty" element={<FacultyPayr />} />
-          <Route path="payroll-staff" element={<StaffPayr />} />
+          <Route path="payroll-faculty" element={<FacultyPayr />} >
+            <Route index element={<Overview />}/>
+            <Route path="overview" element={<Overview />}/>
+            <Route path="members" element={<UserList/>}/>
+            <Route path="faculty" element={<UserList/>}/>
+            <Route path="staff" element={<UserList/>}/>
+            <Route path="adhoc" element={<UserList/>}/>
+            <Route path="members/:userId" element={<User/>}/>
+          </Route>
+          <Route path="payroll-staff" element={<earningData />} />
           <Route path="payroll-adhoc" element={<AdHocPayr />} />
         </Route>
 
