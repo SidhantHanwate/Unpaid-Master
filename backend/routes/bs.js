@@ -1,7 +1,7 @@
 // Income  Statement router
 
 // Applications :
-// (i) to create income statement pdf --- TOCHANGE
+// (i) to create balance sheet pdf-- - TOCHANGE
 
 // Requirements
 const express = require("express");
@@ -13,11 +13,11 @@ const htmlpdf = require("html-pdf");
 const bsRouter = express.Router();
 
 // Templates
-const pdfTemplate = require("../views/template/ins"); // --TOCHANGE
+const pdfTemplate = require("../views/template/bs"); // --TOCHANGE
 
 // Per file Variables
 var file_count = 0;
-const gen_file_name = "income_statement"; // --TOCHANGE
+const gen_file_name = "balance_sheet"; // --TOCHANGE
 
 // Middleware
 bsRouter.use(cors());
@@ -43,7 +43,16 @@ bsRouter.post("/createpdf", (req, res) => {
 
 // He gives the pdf which is created by the createpdf
 bsRouter.get("/getpdf", (_req, res) => {
-	res.sendFile(`${__dirname}/${gen_file_name}_${file_count}.pdf`);
+	const dirpath = __dirname;
+	var path = "",
+		lastIndex = 0;
+	for (var i = 0; i < dirpath.length; i++) {
+		if (dirpath[i] == "\\") {
+			lastIndex = i;
+		}
+	}
+	path = dirpath.substring(0, lastIndex);
+	res.sendFile(`${path}/${gen_file_name}_${file_count}.pdf`);
 	file_count++;
 });
 

@@ -16,7 +16,7 @@ const locRouter = express.Router();
 const pdfTemplate = require("../views/template/loc");
 
 // Per file Variables
-var file_count = 0;
+var file_count = 1;
 const gen_file_name = "letter_of_credit";
 
 // Middleware
@@ -29,8 +29,9 @@ locRouter.use(bodyparser.json());
 
 // Creates pdf
 // notifies frontend that he created the pdf
-locRouter.post("/createpdf", (req, res) => {
+locRouter.post("/create", (req, res) => {
 	//console.log(`${req.body.name}`);
+	console.log("Post Request to generate file -> From Backend");
 	htmlpdf
 		.create(pdfTemplate(req.body), {})
 		.toFile(`${gen_file_name}_${file_count}.pdf`, (err) => {
@@ -42,8 +43,17 @@ locRouter.post("/createpdf", (req, res) => {
 });
 
 // He gives the pdf which is created by the createpdf
-locRouter.get("/getpdf", (_req, res) => {
-	res.sendFile(`${__dirname}/${gen_file_name}_${file_count}.pdf`);
+locRouter.get("/get", (_req, res) => {
+	const dirpath = __dirname;
+	var path = "",
+		lastIndex = 0;
+	for (var i = 0; i < dirpath.length; i++) {
+		if (dirpath[i] == "\\") {
+			lastIndex = i;
+		}
+	}
+	path = dirpath.substring(0, lastIndex);
+	res.sendFile(`${path}/${gen_file_name}_${file_count}.pdf`);
 	file_count++;
 });
 

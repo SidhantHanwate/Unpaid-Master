@@ -6,10 +6,11 @@ import Style from "./../modules/LetterOfCredit.module.css";
 import { Button, ButtonGroup, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { useFormik } from "formik";
 import axios from "axios";
-import jsPDF from "jspdf";
 import "jspdf-autotable";
+import { saveAs } from "file-saver";
 
 const FILE_NAME = "myfile.pdf";
+const PORT = 4000;
 
 export function LetterOfCredit() {
 	const formik = useFormik({
@@ -23,16 +24,17 @@ export function LetterOfCredit() {
 		},
 	});
 
-	var createAndDownloadPdf = (event) => {
-		axios.post(`http://localhost:${PORT}/createpdf`, formik.values).then(() => {
-			axios
-				.get(`http://localhost:${PORT}/getpdf`, { responseType: "blob" })
-				.then((res) => {
-					// pdf response from get
-					const pdfblob = new Blob([res.data], { type: "application/pdf" });
-					saveAs(pdfblob, `${FILE_NAME}.pdf`);
-				});
-		});
+	const createAndDownloadPdf = (event) => {
+		axios
+			.post(`http://localhost:${PORT}/loc/create`, formik.values)
+			.then(() => {
+				axios
+					.get(`http://localhost:${PORT}/loc/get`, { responseType: "blob" })
+					.then((res) => {
+						const pdfblob = new Blob([res.data], { type: "application/pdf" });
+						saveAs(pdfblob, `${FILE_NAME}.pdf`);
+					});
+			});
 	};
 
 	return (
