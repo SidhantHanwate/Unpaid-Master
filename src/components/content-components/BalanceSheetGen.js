@@ -1,7 +1,14 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 
-import Style from "../modules/BalanceSheetGen.module.css";
+import Style from "./../modules/BalanceSheetGen.module.css";
+
+import axios from "axios";
+import "jspdf-autotable";
+import { saveAs } from "file-saver";
+import { Button, ButtonGroup, OverlayTrigger, Tooltip } from "react-bootstrap";
+const FILE_NAME = "bs"; // don't give .pdf file extension (for people who keeps on adding .pdf file extension even after frequent changing)
+const PORT = 4000;
 
 export function BalanceSheetGen() {
   const formik = useFormik({
@@ -72,10 +79,19 @@ export function BalanceSheetGen() {
       tca20: 0.0,
       oca19: 0.0,
       oca20: 0.0,
-      ta19: 0.0,
-      ta20: 0.0,
     },
   });
+
+  const createAndDownloadPdf = (event) => {
+    axios.post(`http://localhost:${PORT}/bs/create`, formik.values).then(() => {
+      axios
+        .get(`http://localhost:${PORT}/bs/get`, { responseType: "blob" })
+        .then((res) => {
+          const pdfblob = new Blob([res.data], { type: "application/pdf" });
+          saveAs(pdfblob, `${FILE_NAME}.pdf`);
+        });
+    });
+  };
 
   return (
     <div>
@@ -1353,13 +1369,7 @@ export function BalanceSheetGen() {
                   id="126933298R24"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    25
-                  </div>
-                </th>
+                ></th>
                 <td className="s1" dir="ltr"></td>
                 <td className="s1"></td>
                 <td className="s1"></td>
@@ -1375,27 +1385,8 @@ export function BalanceSheetGen() {
                   id="126933298R25"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    26
-                  </div>
-                </th>
-                <td className="s6" dir="ltr">
-                  Balance Carry Down (c/d)
-                </td>
-                <td className="s5" dir="ltr">
-                  <input
-                    type="number"
-                    readonly="true"
-                    step="0.01"
-                    className="diff"
-                    name="diff"
-                    value={formik.values.diff}
-                    onChange={formik.handleChange}
-                  />
-                </td>
+                ></th>
+
                 <td className="s1" dir="ltr"></td>
                 <td></td>
                 <td></td>
@@ -1406,13 +1397,7 @@ export function BalanceSheetGen() {
                   id="126933298R26"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    27
-                  </div>
-                </th>
+                ></th>
                 <td className="s1"></td>
                 <td className="s1"></td>
                 <td className="s1"></td>
@@ -1428,13 +1413,7 @@ export function BalanceSheetGen() {
                   id="126933298R27"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    28
-                  </div>
-                </th>
+                ></th>
                 <td className="s1"></td>
                 <td className="s1"></td>
                 <td className="s1"></td>
@@ -1450,13 +1429,7 @@ export function BalanceSheetGen() {
                   id="126933298R48"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    29
-                  </div>
-                </th>
+                ></th>
                 <td className="s1"></td>
                 <td className="s1"></td>
                 <td className="s1"></td>
@@ -1472,13 +1445,7 @@ export function BalanceSheetGen() {
                   id="126933298R49"
                   //style="height: 20px;"
                   className="row-headers-background"
-                >
-                  <div
-                    className="row-header-wrapper" /*style="line-height: 20px"*/
-                  >
-                    30
-                  </div>
-                </th>
+                ></th>
                 <td className="s1"></td>
                 <td className="s1"></td>
                 <td className="s1"></td>
@@ -1489,6 +1456,28 @@ export function BalanceSheetGen() {
                 <td></td>
                 <td className="s1"></td>
               </tr>
+              <ButtonGroup className={Style.actBtngrp}>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={<Tooltip>Generate .pdf</Tooltip>}
+                >
+                  <Button
+                    className={Style.genBut}
+                    variant="secondary"
+                    onClick={createAndDownloadPdf}
+                  >
+                    Generate
+                  </Button>
+                </OverlayTrigger>
+                {/* <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={<Tooltip>Save in database</Tooltip>}
+                >
+                  <Button className={Style.genBut}>Save</Button>
+                </OverlayTrigger> */}
+              </ButtonGroup>
             </tbody>
           </table>
         </div>
@@ -1501,387 +1490,3 @@ export function BalanceSheetGen() {
     </div>
   );
 }
-
-// function sum(array) {
-//   var s = 0;
-//   for (let index = 0; index < array.length; index++) {
-//     s = s + parseFloat(array[index].value);
-//   }
-//   console.log(s);
-//   return s;
-// }
-
-// function bind1(sc, tsc, rf, trf, tsf) {
-//   sc.addEventListener("keyup", function () {
-//     tsc.value = sc.value;
-//     tsc.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   tsc.addEventListener("keyup", function () {
-//     tsf.value = parseFloat(tsc.value) + parseFloat(trf.value);
-//     tsf.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   rf.addEventListener("keyup", function () {
-//     trf.value = rf.value;
-//     trf.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   trf.addEventListener("keyup", function () {
-//     tsf.value = parseFloat(tsc.value) + parseFloat(trf.value);
-//     tsf.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-// }
-
-// function bind2(ltb, dtl, otll, ltp, tncl) {
-//   ltb.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   dtl.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   ltp.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   otll.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-// }
-
-// function bind3(tsf, tncl, tcl, tcal) {
-//   tsf.addEventListener("keyup", function () {
-//     tcal.value =
-//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
-//   });
-//   tncl.addEventListener("keyup", function () {
-//     tcal.value =
-//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
-//   });
-//   tcl.addEventListener("keyup", function () {
-//     tcal.value =
-//       parseFloat(tsf.value) + parseFloat(tncl.value) + parseFloat(tcl.value);
-//   });
-// }
-
-// function bind5(tsf, tncl, tcal) {
-//   tsf.addEventListener("keyup", function () {
-//     tcal.value = parseFloat(tsf.value) + parseFloat(tncl.value);
-//     tcal.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   tncl.addEventListener("keyup", function () {
-//     tcal.value = parseFloat(tsf.value) + parseFloat(tncl.value);
-//     tcal.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-// }
-
-// function bind4(ltb, dtl, otll, ltp, tcp, tncl) {
-//   ltb.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   dtl.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   ltp.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   otll.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   tcp.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-// }
-
-// function bind6(ltb, dtl, otll, ltp, tcp, ip, tncl) {
-//   ltb.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   dtl.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   ltp.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   otll.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   tcp.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-//   ip.addEventListener("keyup", function () {
-//     tncl.value =
-//       parseFloat(ltb.value) +
-//       parseFloat(dtl.value) +
-//       parseFloat(otll.value) +
-//       parseFloat(ltp.value) +
-//       parseFloat(tcp.value) +
-//       parseFloat(ip.value);
-//     tncl.dispatchEvent(new Event("keyup", { bubbles: true }));
-//   });
-// }
-
-// function bindfin() {
-//   var l1 = document.getElementsByClassName("tcal19")[0];
-//   var l2 = document.getElementsByClassName("tcal20")[0];
-//   var a1 = document.getElementsByClassName("ta19")[1];
-//   var a2 = document.getElementsByClassName("ta20")[1];
-
-//   document.getElementsByClassName("diff")[0].value = Math.abs(
-//     parseFloat(l1.value) +
-//       parseFloat(l2.value) -
-//       (parseFloat(a1.value) + parseFloat(a2.value))
-//   );
-
-//   l1.addEventListener("keyup", function () {
-//     document.getElementsByClassName("diff")[0].value = Math.abs(
-//       parseFloat(l1.value) +
-//         parseFloat(l2.value) -
-//         (parseFloat(a1.value) + parseFloat(a2.value))
-//     );
-//   });
-//   l2.addEventListener("keyup", function () {
-//     document.getElementsByClassName("diff")[0].value = Math.abs(
-//       parseFloat(l1.value) +
-//         parseFloat(l2.value) -
-//         (parseFloat(a1.value) + parseFloat(a2.value))
-//     );
-//   });
-//   a1.addEventListener("keyup", function () {
-//     document.getElementsByClassName("diff")[0].value = Math.abs(
-//       parseFloat(l1.value) +
-//         parseFloat(l2.value) -
-//         (parseFloat(a1.value) + parseFloat(a2.value))
-//     );
-//   });
-//   a2.addEventListener("keyup", function () {
-//     document.getElementsByClassName("diff")[0].value = Math.abs(
-//       parseFloat(l1.value) +
-//         parseFloat(l2.value) -
-//         (parseFloat(a1.value) + parseFloat(a2.value))
-//     );
-//   });
-// }
-
-// function submit() {
-//   console.log("here");
-//   var arr1 = [];
-
-//   var sc = document.getElementsByClassName("sc20")[0];
-//   var tsc = document.getElementsByClassName("tsc20")[0];
-//   var rf = document.getElementsByClassName("rf20")[0];
-//   var trf = document.getElementsByClassName("trf20")[0];
-//   var tsf = document.getElementsByClassName("tsf20")[0];
-
-//   bind1(sc, tsc, rf, trf, tsf);
-
-//   var ltb = document.getElementsByClassName("ltb20")[0];
-//   var dtl = document.getElementsByClassName("dtl20")[0];
-//   var otll = document.getElementsByClassName("otll20")[0];
-//   var ltp = document.getElementsByClassName("ltp20")[0];
-//   var tncl = document.getElementsByClassName("tncl20")[0];
-//   bind2(ltb, dtl, otll, ltp, tncl);
-
-//   var stb = document.getElementsByClassName("stb20")[0];
-//   var tp = document.getElementsByClassName("tp20")[0];
-//   var ocl = document.getElementsByClassName("ocl20")[0];
-//   var stp = document.getElementsByClassName("stp20")[0];
-//   var tcl = document.getElementsByClassName("tcl20")[0];
-//   bind2(stb, tp, ocl, stp, tcl);
-
-//   bind3(tsf, tncl, tcl, document.getElementsByClassName("tcal20")[0]);
-
-//   sc = document.getElementsByClassName("sc19")[0];
-//   tsc = document.getElementsByClassName("tsc19")[0];
-//   rf = document.getElementsByClassName("rf19")[0];
-//   trf = document.getElementsByClassName("trf19")[0];
-//   tsf = document.getElementsByClassName("tsf19")[0];
-//   bind1(sc, tsc, rf, trf, tsf);
-
-//   ltb = document.getElementsByClassName("ltb19")[0];
-//   dtl = document.getElementsByClassName("dtl19")[0];
-//   otll = document.getElementsByClassName("otll19")[0];
-//   ltp = document.getElementsByClassName("ltp19")[0];
-//   tncl = document.getElementsByClassName("tncl19")[0];
-//   bind2(ltb, dtl, otll, ltp, tncl);
-
-//   stb = document.getElementsByClassName("stb19")[0];
-//   tp = document.getElementsByClassName("tp19")[0];
-//   ocl = document.getElementsByClassName("ocl19")[0];
-//   stp = document.getElementsByClassName("stp19")[0];
-//   tcl = document.getElementsByClassName("tcl19")[0];
-//   bind2(stb, tp, ocl, stp, tcl);
-
-//   bind3(tsf, tncl, tcl, document.getElementsByClassName("tcal19")[0]);
-
-//   ltb = document.getElementsByClassName("ta20")[0];
-//   dtl = document.getElementsByClassName("ia20")[0];
-//   otll = document.getElementsByClassName("cwip20")[0];
-//   ltp = document.getElementsByClassName("oa20")[0];
-//   tncl = document.getElementsByClassName("fa20")[0];
-//   bind2(ltb, dtl, otll, ltp, tncl);
-
-//   ltb = document.getElementsByClassName("nci20")[0];
-//   dtl = document.getElementsByClassName("dta20")[0];
-//   otll = document.getElementsByClassName("ltlaa20")[0];
-//   ltp = document.getElementsByClassName("onca20")[0];
-//   bind4(
-//     ltb,
-//     dtl,
-//     otll,
-//     ltp,
-//     tncl,
-//     document.getElementsByClassName("tnca20")[0]
-//   );
-
-//   ltb = document.getElementsByClassName("ci20")[0];
-//   dtl = document.getElementsByClassName("i20")[0];
-//   otll = document.getElementsByClassName("tr20")[0];
-//   ltp = document.getElementsByClassName("cace20")[0];
-//   tncl = document.getElementsByClassName("stlaa20")[0];
-//   stb = document.getElementsByClassName("oca20")[0];
-//   bind6(
-//     ltb,
-//     dtl,
-//     otll,
-//     ltp,
-//     tncl,
-//     stb,
-//     document.getElementsByClassName("tca20")[0]
-//   );
-
-//   bind5(
-//     document.getElementsByClassName("tnca20")[0],
-//     document.getElementsByClassName("tca20")[0],
-//     document.getElementsByClassName("ta20")[1]
-//   );
-
-//   ltb = document.getElementsByClassName("ta19")[0];
-//   dtl = document.getElementsByClassName("ia19")[0];
-//   otll = document.getElementsByClassName("cwip19")[0];
-//   ltp = document.getElementsByClassName("oa19")[0];
-//   tncl = document.getElementsByClassName("fa19")[0];
-//   bind2(ltb, dtl, otll, ltp, tncl);
-
-//   ltb = document.getElementsByClassName("nci19")[0];
-//   dtl = document.getElementsByClassName("dta19")[0];
-//   otll = document.getElementsByClassName("ltlaa19")[0];
-//   ltp = document.getElementsByClassName("onca19")[0];
-//   bind4(
-//     ltb,
-//     dtl,
-//     otll,
-//     ltp,
-//     tncl,
-//     document.getElementsByClassName("tnca19")[0]
-//   );
-
-//   ltb = document.getElementsByClassName("ci19")[0];
-//   dtl = document.getElementsByClassName("i19")[0];
-//   otll = document.getElementsByClassName("tr19")[0];
-//   ltp = document.getElementsByClassName("cace19")[0];
-//   tncl = document.getElementsByClassName("stlaa19")[0];
-//   stb = document.getElementsByClassName("oca19")[0];
-//   bind6(
-//     ltb,
-//     dtl,
-//     otll,
-//     ltp,
-//     tncl,
-//     stb,
-//     document.getElementsByClassName("tca19")[0]
-//   );
-
-//   bind5(
-//     document.getElementsByClassName("tnca19")[0],
-//     document.getElementsByClassName("tca19")[0],
-//     document.getElementsByClassName("ta19")[1]
-//   );
-
-//   bindfin();
-
-//   console.log("done ig");
-// }
-
-// document.onload = submit();

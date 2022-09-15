@@ -91,3 +91,15 @@
       direction: ltr;
       padding: 2px 3px 2px 3px;
   }
+
+  .genBut {
+	position: relative;
+	color: aqua;
+	width: fit-content;
+}
+
+.btn {
+	position: absolute;
+	color: blue;
+	background-color: chocolate;
+}
