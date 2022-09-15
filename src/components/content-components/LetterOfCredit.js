@@ -9,7 +9,7 @@ import axios from "axios";
 import "jspdf-autotable";
 import { saveAs } from "file-saver";
 
-const FILE_NAME = "myfile.pdf";
+const FILE_NAME = "loc.pdf";
 const PORT = 4000;
 
 export function LetterOfCredit() {
@@ -20,7 +20,10 @@ export function LetterOfCredit() {
 			address: "Tirupati",
 			amount: "$5000",
 			date: "10-10-2022",
+			subject: "Import requests for the Project Accounts",
+			attention: "Department of Academic Affairs",
 			valid: "10-12-2022",
+			addressB: "Settipalli, Tirupati",
 		},
 	});
 
@@ -60,6 +63,45 @@ export function LetterOfCredit() {
 								/>
 							</div>
 						</form>
+						<form>
+							<div>
+								<label htmlFor="Attention">Attention</label>
+								<input
+									type="text"
+									required
+									placeholder="Enter the attention to be added in the letter"
+									name="attention"
+									value={formik.values.attention}
+									onChange={formik.handleChange}
+								/>
+							</div>
+						</form>
+						<form>
+							<div>
+								<label htmlFor="AddressB">Bank's Address</label>
+								<input
+									type="text"
+									required
+									placeholder="Enter the address of the bank"
+									name="addressB"
+									value={formik.values.addressB}
+									onChange={formik.handleChange}
+								/>
+							</div>
+						</form>
+						<form>
+							<div>
+								<label htmlFor="Subject">Subject</label>
+								<input
+									type="text"
+									required
+									placeholder="Enter the subject"
+									name="subject"
+									value={formik.values.subject}
+									onChange={formik.handleChange}
+								/>
+							</div>
+						</form>
 						{/* <h2>Letter Of Credit</h2> */}
 						{/* <span>Add details and create a LOC</span> */}
 						<form>
@@ -77,7 +119,7 @@ export function LetterOfCredit() {
 						</form>
 						<form>
 							<div>
-								<label htmlFor="enterAddress">Address</label>
+								<label htmlFor="enterAddress">Sender's Address</label>
 								<input
 									type="text"
 									required
@@ -155,13 +197,13 @@ export function LetterOfCredit() {
 								Generate
 							</Button>
 						</OverlayTrigger>
-						<OverlayTrigger
+						{/* <OverlayTrigger
 							key="top"
 							placement="top"
 							overlay={<Tooltip>Save in database</Tooltip>}
 						>
 							<Button className={Style.genBut}>Save</Button>
-						</OverlayTrigger>
+						</OverlayTrigger> */}
 					</ButtonGroup>
 				</div>
 			</section>
