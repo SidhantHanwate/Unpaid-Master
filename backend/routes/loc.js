@@ -30,7 +30,7 @@ locRouter.use(bodyparser.json());
 // Creates pdf
 // notifies frontend that he created the pdf
 locRouter.post("/create", (req, res) => {
-	//console.log(`${req.body.name}`);
+	// console.log(`${req.body}`);
 	console.log("Post Request to generate file -> From Backend");
 	htmlpdf
 		.create(pdfTemplate(req.body), {})
@@ -39,6 +39,9 @@ locRouter.post("/create", (req, res) => {
 				Promise.reject();
 			}
 			res.send(Promise.resolve());
+			console.log(
+				"Post Request after finishing to generate file -> From Backend"
+			);
 		});
 });
 
