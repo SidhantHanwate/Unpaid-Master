@@ -30,7 +30,6 @@ locRouter.use(bodyparser.json());
 // Creates pdf
 // notifies frontend that he created the pdf
 locRouter.post("/create", (req, res) => {
-<<<<<<< HEAD
   //console.log(`${req.body.name}`);
   console.log("Post Request to generate file -> From Backend");
   htmlpdf
@@ -41,21 +40,6 @@ locRouter.post("/create", (req, res) => {
       }
       res.send(Promise.resolve());
     });
-=======
-	// console.log(`${req.body}`);
-	console.log("Post Request to generate file -> From Backend");
-	htmlpdf
-		.create(pdfTemplate(req.body), {})
-		.toFile(`${gen_file_name}_${file_count}.pdf`, (err) => {
-			if (err) {
-				Promise.reject();
-			}
-			res.send(Promise.resolve());
-			console.log(
-				"Post Request after finishing to generate file -> From Backend"
-			);
-		});
->>>>>>> 13e9b9fc91f0812eeec505113373cc4da6ed30dc
 });
 
 // He gives the pdf which is created by the createpdf

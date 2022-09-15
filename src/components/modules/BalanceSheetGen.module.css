@@ -76,17 +76,7 @@
 	padding: 2px 3px 2px 3px;
 }
 
-<<<<<<< HEAD
-      background-color: #ffffff;
-      text-align: left;
-      color: #000000;
-      font-family: 'Arial';
-      font-size: 10pt;
-      vertical-align: bottom;
-      white-space: nowrap;
-      direction: ltr;
-      padding: 2px 3px 2px 3px;
-  }
+    
 
   .genBut {
 	position: relative;
@@ -99,16 +89,3 @@
 	color: blue;
 	background-color: chocolate;
 }
-=======
-.ritz .waffle .s1 {
-	background-color: #ffffff;
-	text-align: left;
-	color: #000000;
-	font-family: "Arial";
-	font-size: 10pt;
-	vertical-align: bottom;
-	white-space: nowrap;
-	direction: ltr;
-	padding: 2px 3px 2px 3px;
-}
->>>>>>> 13e9b9fc91f0812eeec505113373cc4da6ed30dc
