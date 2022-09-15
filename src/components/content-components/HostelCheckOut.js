@@ -24,7 +24,7 @@ export function HostelCheckOut() {
         <h1>Hostel Check Out</h1>
       <Form.Group className="mb-3" controlId="nameout">
         <Form.Label>Name</Form.Label>
-        <input required onChange={nameUpdate}></input>
+        {/* <input required onChange={nameUpdate}></input> */}
         <Form.Control type="text" placeholder="Enter name" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="rollout">
