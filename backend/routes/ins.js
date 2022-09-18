@@ -17,7 +17,7 @@ const pdfTemplate = require("../views/template/ins"); // --TOCHANGE
 
 // Per file Variables
 var file_count = 0;
-const gen_file_name = "income_statement"; // --TOCHANGE
+const gen_file_name = "income_sheet"; // --TOCHANGE
 
 // Middleware
 insRouter.use(cors());
@@ -29,22 +29,34 @@ insRouter.use(bodyparser.json());
 
 // Creates pdf
 // notifies frontend that he created the pdf
-insRouter.post("/createpdf", (req, res) => {
-	//console.log(`${req.body.name}`);
-	htmlpdf
-		.create(pdfTemplate(req.body), {})
-		.toFile(`${gen_file_name}_${file_count}.pdf`, (err) => {
-			if (err) {
-				Promise.reject();
-			}
-			res.send(Promise.resolve());
-		});
+insRouter.post("/create", (req, res) => {
+  //console.log(`${req.body.name}`);
+  console.log("Post Request to generate file -> From Backend");
+  htmlpdf
+    .create(pdfTemplate(req.body), {})
+    .toFile(`${gen_file_name}_${file_count}.pdf`, (err) => {
+      if (err) {
+        Promise.reject();
+      }
+      res.send(Promise.resolve());
+    });
 });
 
 // He gives the pdf which is created by the createpdf
-insRouter.get("/getpdf", (_req, res) => {
-	res.sendFile(`${__dirname}/${gen_file_name}_${file_count}.pdf`);
-	file_count++;
+insRouter.get("/get", (_req, res) => {
+  const dirpath = __dirname;
+  console.log("Post Request to display file -> From Backend");
+  var path = "",
+    lastIndex = 0;
+  for (var i = 0; i < dirpath.length; i++) {
+    if (dirpath[i] == "\\") {
+      lastIndex = i;
+    }
+  }
+  path = dirpath.substring(0, lastIndex);
+  res.sendFile(`${__dirname}/${gen_file_name}_${file_count}.pdf`);
+  file_count++;
+  console.log("Post Request to display file -> From Backend Complete");
 });
 
 module.exports = insRouter;

@@ -65,6 +65,8 @@ module.exports = ({
   tca20,
   oca19,
   oca20,
+  toa20,
+  toa19,
 }) => {
   return `
 
@@ -1168,7 +1170,7 @@ module.exports = ({
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
-	<td><p>${ta20}</p></td>
+	<td><p>${toa20}</p></td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
@@ -1177,7 +1179,7 @@ module.exports = ({
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
-	<td><p>${ta19}</p></td>
+	<td><p>${toa19}</p></td>
 	</tr>
 
  

@@ -31,7 +31,7 @@ bsRouter.use(bodyparser.json());
 // notifies frontend that he created the pdf
 bsRouter.post("/create", (req, res) => {
   //console.log(`${req.body.name}`);
-  console.log("Post Request to generate file -> From Backend");
+  //console.log("Post Request to generate file -> From Backend");
   htmlpdf
     .create(pdfTemplate(req.body), {})
     .toFile(`${gen_file_name}_${file_count}.pdf`, (err) => {

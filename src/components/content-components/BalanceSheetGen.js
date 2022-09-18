@@ -79,6 +79,8 @@ export function BalanceSheetGen() {
       tca20: 0.0,
       oca19: 0.0,
       oca20: 0.0,
+      toa20: 0.0,
+      toa19: 0.0,
     },
   });
 
@@ -369,7 +371,7 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="ia19"
-                    name="1a19"
+                    name="ia19"
                     value={formik.values.ia19}
                     onChange={formik.handleChange}
                   />
@@ -521,7 +523,7 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tsf20"
-                    id="liasum201"
+                    id="tsf20"
                     name="tsf20"
                     value={formik.values.tsf20}
                     onChange={formik.handleChange}
@@ -532,7 +534,7 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="tsf19"
-                    id="liasum191"
+                    id="tsf19"
                     name="tsf19"
                     value={formik.values.tsf19}
                     onChange={formik.handleChange}
@@ -547,7 +549,7 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="fa20"
-                    id="asssum201"
+                    id="fa20"
                     name="fa20"
                     value={formik.values.fa20}
                     onChange={formik.handleChange}
@@ -558,7 +560,7 @@ export function BalanceSheetGen() {
                     type="number"
                     step="0.01"
                     className="fa19"
-                    id="asssum191"
+                    id="fa19"
                     name="fa19"
                     value={formik.values.fa19}
                     onChange={formik.handleChange}
@@ -1348,16 +1350,16 @@ export function BalanceSheetGen() {
                     type="number"
                     className="ta20"
                     name="ta20"
-                    value={formik.values.ta20}
+                    value={formik.values.toa20}
                     onChange={formik.handleChange}
                   />
                 </td>
                 <td className="s5" dir="ltr">
                   <input
                     type="number"
-                    className="ta19"
-                    name="ta19"
-                    value={formik.values.ta19}
+                    className="toa19"
+                    name="toa19"
+                    value={formik.values.toa19}
                     onChange={formik.handleChange}
                   />
                 </td>
