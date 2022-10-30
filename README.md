@@ -1,6 +1,7 @@
 We have worked on the module of Finance,Accounts and Audit(part1 of IIT-TIRUPATI's erp system requirements) as part of the course CS3105.
 We have implemented this web application using MERN stack.
 Our web application has the following functionalities
+
 1)HEFA requests
 Description:
 This is a new concept in IITs. Being 3G IIT, Principal Repayment and Interest
@@ -9,16 +10,20 @@ Disbursement Request based on the inputs and shall capture the payments
 made by HEFA again based on the inputs, calculation of quarterly interest,
 separate ledgers for Civil Works and Capital Equipment which would be given
 in detailed manner.
+
 2)Income sheet generator
 Description:
 Institute can generate the income sheet and even print them.
+
 3)Balance sheet generator
 Description:
 Institute can generate the balance sheet and even print them.
+
 4)Letter of Credit
 Description:
 Letter of Credits to be generated for the Imports for both Institute Account and
 Project Accounts in the formats prescribed by various Banks.
+
 5)Annual Budegt Generation:
 Description:
 Budget has to be prepared in two stages, Annual Budget Estimates to be
@@ -29,6 +34,7 @@ generated Head-wise. Also quarterly requirement has to be projected for every
 quarter duly indicating expenditure as at the end of the quarter. Ability to
 provide capital expenditure and operational expenditure for every financial
 year.
+
 6)Pay roll
 Description:
 Pay roll is one of the most important module in Accounts. Individual Masters
@@ -45,21 +51,25 @@ relevant parameters like from date, %age, etc. Various components have to be
 worked out by the System such as House Rent Allowance, Transport Allowance
 and DA on Transport Allowance, Transport Allowance for Physically challenged
 officials.
+
 For new Entrants, NPS Account generation, recovery of subscription and
 calculation of Contribution from the Employer to be auto generated. NPS Form
 has to be generated from the system based on the data available from the Bio-
 data to Appointment order and Joining Report. As and when any arrears are
 paid as part of emoluments reckoned to calculate NPS, NPS arrears have to be
 calculated automatically by the system.
+
 7)Hostel Check-In and Check-Out:
 Description:
 Students will enter their check-in and check-out details.Based on this
 information reimbursment will be caluclated and can be transferred back
 to the student's account.
+
 8)Challan generation:
 Description:
 Students will enter their details and enter the amount to be paid.Based on
 these details,challan will be generated.This challan is required to pay the fee.
+
 9)Ledgers:
 Description:
 The system is expected to manage General Ledger Masters and General
