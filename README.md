@@ -76,6 +76,7 @@ The system is expected to manage General Ledger Masters and General
 Ledger Reports.
 
 Contributions:
+
 -Nishanth: Managing and maintenance of HEFA requests module, Detailed Ledgers management module and the backend for most of the modules.
 
 -Sidhant: Letter of Credits template generation module, Annual Budget maintenance module and storing in databases along with some visualization of data.
