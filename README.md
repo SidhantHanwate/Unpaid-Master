@@ -74,3 +74,14 @@ these details,challan will be generated.This challan is required to pay the fee.
 Description:
 The system is expected to manage General Ledger Masters and General
 Ledger Reports.
+
+Contributions:
+-Nishanth: Managing and maintenance of HEFA requests module, Detailed Ledgers management module and the backend for most of the modules.
+
+-Sidhant: Letter of Credits template generation module, Annual Budget maintenance module and storing in databases along with some visualization of data.
+
+-Devansh: Payroll and employee details management module, some of the frontend related modules.
+
+-Lithesh: Income sheet generation module, Balance sheet reports generation module along with generating pdfs and storing in the databases.
+
+-Saranya: Hostell and Mess Fee Challan generation along with storing the data in databases
