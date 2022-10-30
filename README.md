@@ -1,70 +1,66 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+We have worked on the module of Finance,Accounts and Audit(part1 of IIT-TIRUPATI's erp system requirements) as part of the course CS3105.
+We have implemented this web application using MERN stack.
+Our web application has the following functionalities
+1)HEFA requests
+Description:
+This is a new concept in IITs. Being 3G IIT, Principal Repayment and Interest
+payments are being given as Grants from MOE. System shall generate HEFA
+Disbursement Request based on the inputs and shall capture the payments
+made by HEFA again based on the inputs, calculation of quarterly interest,
+separate ledgers for Civil Works and Capital Equipment which would be given
+in detailed manner.
+2)Income sheet generator
+Description:
+Institute can generate the income sheet and even print them.
+3)Balance sheet generator
+Description:
+Institute can generate the balance sheet and even print them.
+4)Letter of Credit
+Description:
+Letter of Credits to be generated for the Imports for both Institute Account and
+Project Accounts in the formats prescribed by various Banks.
+5)Annual Budegt Generation:
+Description:
+Budget has to be prepared in two stages, Annual Budget Estimates to be
+submitted for the next Financial Year and Revised Estimates for the current
+financial year. The Budget formats prescribed by MOE to be followed, for
+which opening balance at the beginning of the Financial Year has to be
+generated Head-wise. Also quarterly requirement has to be projected for every
+quarter duly indicating expenditure as at the end of the quarter. Ability to
+provide capital expenditure and operational expenditure for every financial
+year.
+6)Pay roll
+Description:
+Pay roll is one of the most important module in Accounts. Individual Masters
+with all relevant data viz., date of joining to date of retirement, increment date,
+amount, postponement if any due to Extraordinary leave and Dies-non to be
+generated by the system. System shall automatically calculate the leave salary
+in case an individual goes on leave affecting the pay for eg. Half Pay leave,
+Extra Ordinary Leave etc. Pay roll has to be generated in two or three separate
+payrolls, one for faculty, one for staff and one for Ad-hoc staff. Hope the Payroll
+package is a well-defined one with income Tax calculation and based on the
+rules prevailing and amended from time to time. System shall generate Arrears
+payments like salary arrears, DA arrears and other arrears by inputting the
+relevant parameters like from date, %age, etc. Various components have to be
+worked out by the System such as House Rent Allowance, Transport Allowance
+and DA on Transport Allowance, Transport Allowance for Physically challenged
+officials.
+For new Entrants, NPS Account generation, recovery of subscription and
+calculation of Contribution from the Employer to be auto generated. NPS Form
+has to be generated from the system based on the data available from the Bio-
+data to Appointment order and Joining Report. As and when any arrears are
+paid as part of emoluments reckoned to calculate NPS, NPS arrears have to be
+calculated automatically by the system.
+7)Hostel Check-In and Check-Out:
+Description:
+Students will enter their check-in and check-out details.Based on this
+information reimbursment will be caluclated and can be transferred back
+to the student's account.
+8)Challan generation:
+Description:
+Students will enter their details and enter the amount to be paid.Based on
+these details,challan will be generated.This challan is required to pay the fee.
+9)Ledgers:
+Description:
+The system is expected to manage General Ledger Masters and General
+Ledger Reports.
