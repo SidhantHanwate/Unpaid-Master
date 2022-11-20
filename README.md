@@ -1,5 +1,14 @@
 We have worked on the module of Finance,Accounts and Audit(part1 of IIT-TIRUPATI's erp system requirements) as part of the course CS3105.
 We have implemented this web application using MERN stack.
+
+Installation Instructions:
+1) Clone the repository using the link https://github.com/Nish60220110anth/Unpaid.git
+2) cd into the Unpaid folder
+3) npm install
+4) simulatanesouly run "npm start" and "nodemon start" using two terminals. 
+
+
+
 Our web application has the following functionalities
 
 1)HEFA requests
